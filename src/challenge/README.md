@@ -1,7 +1,3 @@
-### 挑战赛复盘
-
-本次挑战赛的复盘转移到了: https://www.liaohuqiu.net/cn/posts/a-simple-story-of-a-solidity-challenge/
-
 ### 白帽黑客挑战赛 赛制与规则说明
 
 1. 阅读代码，尽可能的破解下面这个智能合约 TimeDelayedVault，本合约的本来目的是一个限制取钱数额和时间的多人共享钱包，每30min只能取钱0.001ETH。但遗憾的是，这段程序代码质量，特别差，而且特么的还没有注释。请阅读代码，寻找可能的程序漏洞。
@@ -30,140 +26,124 @@ pragma solidity ^0.4.17;
 contract GamerVerifier {
     mapping(address => uint256) public gamers;
     address owner;
-
+    
     function GamerVerifier() {
         owner = msg.sender;
-        gamers[0xf27DBE0D0189B570f105b99D9DEf8bE53C580f5c] = 1;
-        gamers[0xA3900Fce920E75D9C57959bcDb59De2005fd2BC4] = 1;
-        gamers[0xd65d065744FA6838820A6b6aAc00B4A56b76b914] = 1;
-        gamers[0x5cE6eCfBe5cf371Ccf5e7fE6C3Cc39266e68dB29] = 1;
-        gamers[0x0413A70b8e8Bf21bF053478E21dd0De8AeA6826F] = 1;
-        gamers[0x1C84fe9925A1Cc55822c60d08b3633Cadadc70D7] = 1;
-        gamers[0xDF6f145A0fe31605fA6Ab17f7921DDc3d6a8F50F] = 1;
-        gamers[0x73CF713553A7E518f8eEceDDc738B7138d49A5B9] = 1;
-        gamers[0x75ECE74c54b16dEE5f511d103e5ed964414fc08f] = 1;
-        gamers[0x36E1De4e5D12335A40899D7789C3DCa25e9753Ea] = 1;
-        gamers[0xE5C5f93b952bA3905f22CAB1137bBa87d3F7FBCc] = 1;
-        gamers[0x0b5503554F5E7965679C11BB7f983bb8ED2Ae753] = 1;
-        gamers[0x549BE821f57e85044D14e6cf25D89575f4b504Da] = 1;
-        gamers[0xe2BF26C28BFbCB67C9736028cC6d8Bdc279e7B89] = 1;
-        gamers[0xF299C6Bc3B7F77791dD08AAF3E1A21fb2E78aa11] = 1;
-        gamers[0xA4B72f980Dd028126d7efCff41362DD7cE404213] = 1;
-        gamers[0xCc2e0F04B8a0b1D7bC856f635cd09418e96fcdDf] = 1;
-        gamers[0x7C79c21A6e24cd510fc6cc0D732cA8626395FA56] = 1;
-        gamers[0xd48a0ff0c1555ce2e85a0f456ab461e17516d4e6] = 1;
-        gamers[0x21C5Cf3F23b3ebAA975F97e415A9dce5912c6B6b] = 1;
-        gamers[0xF6c396761b3282c237264dd2396b55A206537E2D] = 1;
-        gamers[0x778501523DAF6E1a82E9563A3d16B20D0C880317] = 1;
-        gamers[0x0581F0939F47ac9131CB5b2f4417b9Fc78e1efE1] = 1;
-        gamers[0xf330Efa0b1427cbE9C06f2074EF910686020Af00] = 1;
-        gamers[0x7066A79dC57268E5aC7606f33892DA59842dEef2] = 1;
-        gamers[0xa4B92f7ad9e1014f11a945FDfc6083ec3851c683] = 1;
-        gamers[0x0F6bc4ec38f2cf498e1De46FedD4f83C7e5052d8] = 1;
-        gamers[0x3a8EEb07953e9d712e133AF73D19F72664c68a9f] = 1;
-        gamers[0xBdAE5f6b55340871E46aCfD3cd60F5440ce692e9] = 1;
-        gamers[0x59cDE28A615c45588A5ef80B23Dc138cEA53f8cA] = 1;
-        gamers[0xb5129934b99e1c0cd98F5F9e3ed23c70b45B5197] = 1;
-        gamers[0xAcb798BCA20Dff3Eb7d00042986a6d1dBB7Ac1F9] = 1;
-        gamers[0xF964bD35808F23330197de58c41C6d9E9B5d9988] = 1;
-        gamers[0xFDb51473Ca689D3049953A70fe9BC9839c56Df58] = 1;
-        gamers[0x14583D485A66CbD2DF24828a1aAaA66eD601D320] = 1;
-        gamers[0xB531CF5dd08db63c79c04F64BdE87D2204DC2cf7] = 1;
-        gamers[0x6Cde2e343691d978C55127ce65A27005403D4a33] = 1;
-        gamers[0x1a22c281f7D847e1203b4868b67d457c79ae09B2] = 1;
-        gamers[0x05f304d5ad5b05830b7b6ae6b720b149078c9613] = 1;
-        gamers[0x258bF2836c554AD2A8C07bBdcba8eda6f0B6c87c] = 1;
-        gamers[0x01Fa66084c0B932c13a2b1960E164271DEc1ef82] = 1;
-        gamers[0xE15C943c54D03344963a9CB4Be6857B13804e662] = 1;
-        gamers[0xf1B3Ff6dc1DA7A6E4b41DeA52dABBB3368134e4D] = 1;
-        gamers[0x9A12E84FD7D1433bAbbeC1671b9a9311151747A9] = 1;
-        gamers[0x0384eed9E79Da49C7c2af55773c32F34945871E9] = 1;
-        gamers[0xdC75EB0973F96b735087B6B2f20ef73595509354] = 1;
-        gamers[0xd6e2D22Da032f81f68d92d701b13770cE01b5a01] = 1;
-        gamers[0x0d0fF5D76143d10C0a36Ce58Ac85c790417ed2aB] = 1;
-        gamers[0x3573AB0Aa5a23de49aeA35E824ac843538EB93Ef] = 1;
-        gamers[0x78A7404eF88124d6E8AD747158b23Dff6C64a9eD] = 1;
-        gamers[0x0a2a719654c1dB8Dd024DD9D800F8a50Fd2e5B41] = 1;
-        gamers[0x5647E444cA44614d5Bc9477CbB967cb84A962d41] = 1;
-        gamers[0xbda6813e3e62dadba70d6b45c0c789e870326282] = 1;
-        gamers[0x1Adc5F0E9B9EFf80f4EC32acba227AF2BBa4A960] = 1;
-        gamers[0x8e864D3c72eCD9AA9A18f75f007568c3589D7Cdd] = 1;
-        gamers[0x0a84F5700251d035e6b02fF150530dd98e1cC6ce] = 1;
-        gamers[0x37e4ee08aA97F719af01a3084B2914e5ABF65d25] = 1;
-        gamers[0xc7851869d7bf8c801a551fd9c0dae918f7500844] = 1;
-        gamers[0x77365f9CDd6cdc6aACB399E049625d9183e8A90B] = 1;
-        gamers[0x3399A1474E67f0baEcB288874a044CCfBA1f407B] = 1;
-        gamers[0xb2BD2e988203F63e22c4265c28e5f4abDa1f7b96] = 1;
-        gamers[0x8b68494cCD6Bc2790Dd21809D9Df49C575B0A5F9] = 1;
-        gamers[0xD31f6dF7672531c30f1671fe1075893A95C5f5a0] = 1;
-        gamers[0x72e4C8D16791AC89B907076e97F1BE5C0772A3da] = 1;
-        gamers[0x723379B1CEab2C9B71D33EC8a5ceFf8f81565Da8] = 1;
-        gamers[0x0Adf05c65ebb069Dc6286227A1d0B3D32D30CeFF] = 1;
-        gamers[0x3B3FdF294A83049A7E8B35caCE4b42c977513650] = 1;
-        gamers[0x4f19c983066c24ddbf6e2482f46cb13748136c7a] = 1;
-        gamers[0x2Cb0beF8426b5a69a94aE35a5D51f66A08Ddb5eA] = 1;
-        gamers[0xEF2AF06B62B18A703E1468e1D2357B8Cc9AAB81a] = 1;
-        gamers[0xb21b96A6a4A4C0f1d12815bBE7FA28Bdd0514368] = 1;
-        gamers[0xa24f2b8c429B7B89CFdEfefB2e37172396Fe4d62] = 1;
-        gamers[0xd1698dd6C5048BC05861C6982D28A7919C97E7b7] = 1;
-        gamers[0xd8c911795dd86fB79A9077ccF3aaE526f01B8c63] = 1;
-        gamers[0xB02809CC84bB16A7654c72a30089c5eC0809Aa32] = 1;
-        gamers[0x79F102879Ee8d4F566Ac65e806bA5A22Dea4ddAF] = 1;
-        gamers[0x24811258f15eBacA8d5C82Ac6d788FDE900e45E7] = 1;
-        gamers[0xc1F064Cbb8001da72F8E823D8865f6ec8BAd6e3A] = 1;
-        gamers[0x46A545FD19E99a35582d7052D222A9165c81132C] = 1;
-        gamers[0xffB37241Eba6f9399fD40942FAB8C6c015588D56] = 1;
-        gamers[0x266Ba5BF144f0d6AB534484C54027Dab741323F5] = 1;
-        gamers[0x0Af7886C5A72063306a6056d36335C1dB0f3a897] = 1;
-        gamers[0xb0c14147EABa57352aD93F763a6aE8D0A968B599] = 1;
-        gamers[0xbdd77c21bCB314D996B1E510f845Fd4B685c88f3] = 1;
-        gamers[0xf0f58301c05Fa65eE781CF0eB41662F96B616c16] = 1;
-        gamers[0xdC674193D4f58eB9Ddf91925e7B5D623217c0aF5] = 1;
-        gamers[0xf8898e5fFB4ab83DF3529AEd042554D7A26573a0] = 1;
+                
+        gamers[0xc9c4B9844686586FeC5c490b39E8f7e07D8B5724] = 1;
+        gamers[0x2217ae10f9507a549dA2146a7D31F20228fB903d] = 1;
+        gamers[0x67BF71471Cef4A256ac31E6D0cd642B3CBBa4D7B] = 1;
+        gamers[0xEB18dFe13fec5407B9c31cC601a20684f4C78367] = 1;
+        gamers[0x97083Db837Ec4f6dd6197de3987Bd5e854398139] = 1;
+        gamers[0x491cd67DFa6Cbb36B62e268b04E40aD2c87F2FF3] = 1;
+        gamers[0xF0fBC0C72ACE3AF782FcB63a1a1Ea905F752395d] = 1;
+        gamers[0x5e2C54FA7B502a5b2bca7aBEb79BfD1c992f5475] = 1;
+        gamers[0xd6c40c565e4ea3b660bffe122ba0fa12cbdb6c3a] = 1;
+        gamers[0xC5573a0FeB53dA7699A25B055765B2Bb0F59504E] = 1;
+        gamers[0x5Dc9Cb59074B4370Bd9630A214D518e95119fc78] = 1;
+        gamers[0x8948E4B00DEB0a5ADb909F4DC5789d20D0851D71] = 1;
+        gamers[0x94B04c1C3591FB52C2A26f0ce34aa6c79e413DE4] = 1;
+        gamers[0x0A202F4cBd3fE5A50fde1e000048C405131b2DB6] = 1;
+        gamers[0x3552A5F787f3C1403e4E650c2863fEfaA2F96Df0] = 1;
+        gamers[0x44C9B7F1f2673b294A6Dd147179f6Cdf1F66f361] = 1;
+        gamers[0x5cA9f0441661E1D78D2d053bE03Be1858F1926C3] = 1;
+        gamers[0x1ac326D9FB3e2934d6C5812FD6726771b28F171a] = 1;
+        gamers[0xd376a9e48F992CA553718cB787b73Ab771588074] = 1;
+        gamers[0x990D810DAb1242246EA43c56CC6f27F1fE4be6CF] = 1;
+        gamers[0x5b7eb1dea520e1cc5c903293e55e85fc5b53b10f] = 1;
+        gamers[0x0C3ebdCfC7D43A0e6f637b82Ef8C981895064866] = 1;
+        gamers[0xd2ca38309e2eB41D1708A4613a9517849053820b] = 1;
+        gamers[0x158E66D874189b96f542E84f133e3de78f5C8602] = 1;
+        gamers[0xde21aFc49A8506C0fA9DcCB8A0F6BBD366A92446] = 1;
+        gamers[0x0aa6F9D74Cb6B89265bE8bEc9592fCfdB785993F] = 1;
+        gamers[0xc1B998980C4517042EEA8F444Fc52BC4A1E4a432] = 1;
+        gamers[0x61605B359AC00bcf11F610E786B81e20137ddF4e] = 1;
+        gamers[0x9567B5A2ce75444939e1A3760661EE77dB773584] = 1;
+        gamers[0x51B937965646792d76876a7c71d89BcbF6Ac70b5] = 1;
+        gamers[0x973B07B6b21FD55a67c1f1507c3e38dD2EeFe0A8] = 1;
+        gamers[0x165a4974A9449d49A19b9626eA1Ee05276063Bdd] = 1;
+        gamers[0x79a43bb8D84018abCb7943c50d93ca613F24cAf1] = 1;
+        gamers[0x8cb1e740ae88702a101de25105c6dcc3e025b734] = 1;
+        gamers[0x4264e4fa9D4549e638c5fDE0B1164147c19707DB] = 1;
+        gamers[0xe0bDE9825cbb5623bCE3792FaF529644870e7f1b] = 1;
+        gamers[0xFF7Dd64522f2e202f0EE3C6a44Aa4C947b6F2932] = 1;
+        gamers[0x952AAad91565446A5e8b3639b998a76B74879ae8] = 1;
+        gamers[0xC822CFce2Ea209Bc8561d66453E8015DeF94CC23] = 1;
+        gamers[0x9ad162e528a6ee5a9ee4909447462aa4fdb47767] = 1;
+        gamers[0x6f7f98118e9f6c87de96fa7e56307408cd4466f5] = 1;
+        gamers[0xF11E57FCb123800ae527D1751A46033fC426D848] = 1;
+        gamers[0x4D52CDF22CA2388C5DB7F91e80238c9Bdaa82cC2] = 1;
+        gamers[0x52e81e8cc617347a8c363eb97376b256a3a80d92] = 1;
+        gamers[0x002e5398336213f7890a3647dea7f8e425feb863] = 1;
+        gamers[0xdb7FD07891697f74A7E5102Cc2cC522c25dc06e9] = 1;
+        gamers[0xFD666ec8Cd0178C027B9A41E8f2F311D854F898d] = 1;
+        gamers[0x9b6ACdc56871010C00F765dcaDBB3E99aD3c6593] = 1;
+        gamers[0x9392718a74278ccF741a31bd0c9C5d2BeBB5bAB9] = 1;
+        gamers[0xbf9299779Df4297f9A8Fb38E2c2e70416023Cbe0] = 1;
+        gamers[0x83fE4c5638889318ccE79103efe3881E1EfC3DF8] = 1;
+        gamers[0x52e448aF9bf91916Fb7555cd59A6eB38Ba613E00] = 1;
+        gamers[0xD5c0e626eD1Ea60776b452C018524D374C30bC26] = 1;
+        gamers[0x4b11F5AcB84A4E12AD90C4253bB602Cd56Dd3a4F] = 1;
+        gamers[0xA79B8c2B89f3E7Eb04ead67e65bBF3fCA6d9935E] = 1;
+        gamers[0x847830bcf9135dc4548a64a55ca2b48a8a75c9bb] = 1;
+        gamers[0xD9E68069917393974A464e25F123F22C208afc1D] = 1;
+        gamers[0xD3db32545817a0574938Dc0ab27697699A86efed] = 1;
+        gamers[0x53c7a8d887d8517aa5a8b268ad48caab20a53a50] = 1;
+        gamers[0xa4aAA1B5f371Ac9Df6DB74b4aaAB4cAe91810ce8] = 1;
+        gamers[0x036BBfafae484e8964d861822C9415707b694D4E] = 1;
+        gamers[0x17AB69ccE747130a5faC74Cb033A3Fa9eFb26d41] = 1;
+        gamers[0xCdCd8B86263496270568D6CA74626038Bb6c7Edf] = 1;
+        gamers[0xA5aaC3ff6a6eA1134037752F8eaB76c1854c12e0] = 1;
+        gamers[0xcf6f8CC2B2B2f06F9Cf2c2f919BB8b128F3D0FFA] = 1;
+        gamers[0x63ECc6c4594171289a304FCb9e3829cC35Eb6b9C] = 1;
+
     }
-
-
-
+    
     function addGamer(address addr, uint magic) {
         SOME SECRET CODE;
         gamers[addr] = 1;
     }
-
+    
     function isValidGamer(address gamer) view returns (bool) {
         return (gamers[gamer] == 1);
     }
 }
 
 contract CommonWalletLibrary {
-    uint  public nextWithdrawTime;
-    uint  public withdrawCoolDownTime;
+    uint public nextWithdrawTime;
+    uint public withdrawCoolDownTime;
     address[] public authorizedUsers;
     address public withdrawObserver;
     address public additionalAuthorizedContract;
     address public proposedAAA;
     uint public lastUpdated;
     bool[] public votes;
-    address [] public observerHistory;
+    address[] public observerHistory;
     GamerVerifier public g = GamerVerifier(SOMEADDRESS);
     address owner;
     address walletLibrary;
-
+    
     modifier onlyOnce() {
         require(owner == 0x0);
         _;
     }
-
+    
     modifier onlyOwner() {
         require(msg.sender == owner);
         _;
     }
 
+    modifier recordAction() {
+        lastUpdated = now;
+        _;
+    }
+    
     function addToReserve() payable recordAction external returns (uint) {
         require(g.isValidGamer(msg.sender));
         require(msg.value > 3 ether);
         return address(this).balance;
-    }
-
+    } 
+    
     function initializeVault() onlyOnce {
         lastUpdated = now;
         owner = msg.sender;
@@ -176,57 +156,56 @@ contract CommonWalletLibrary {
 
     function resolve() {
         require(msg.sender == owner);
-        if(now >= lastUpdated + 16 hours) {
+        if(now >= lastUpdated + 12 hours) {
             selfdestruct(owner);
         }
-    }
-
-    modifier recordAction() {
-        lastUpdated = now;
-        _;
     }
 }
 
 contract oobserver {
     function observe() {
-
+        
     }
 }
 
 contract TimeDelayedVault {
-    uint  public nextWithdrawTime;
-    uint  public withdrawCoolDownTime;
+    uint public nextWithdrawTime;
+    uint public withdrawCoolDownTime;
     address[] public authorizedUsers;
     address public withdrawObserver;
     address public additionalAuthorizedContract;
     address public proposedAAA;
     uint public lastUpdated;
     bool[] public votes;
-    address [] public observerHistory;
+    address[] public observerHistory;
     GamerVerifier public g = GamerVerifier(SOMEADDRESS);
     address owner;
     address walletLibrary;
-
-
-    function TimeDelayedVault(address libAddress) recordAction {
+    
+    function TimeDelayedVault() recordAction {
         nextWithdrawTime = now;
         withdrawCoolDownTime = 30 minutes;
-        walletLibrary = libAddress;
+        walletLibrary = SOMEADDRESS;
         address(this).call(bytes4(sha3("initializeVault()")));
         // Please note, the following code chunk is different for each group, all group members are added to authorizedUsers array
-        authorizedUsers.push(xxxxxxxxxx);
+                authorizedUsers.push(SOMEADDRESS);
+                authorizedUsers.push(SOMEADDRESS);
+                authorizedUsers.push(SOMEADDRESS);
+                authorizedUsers.push(SOMEADDRESS);
 
         for(uint i=0; i<authorizedUsers.length; i++) {
             votes.push(false);
         }
     }
 
+    function() public payable { }
+
     modifier onlyAuthorized() {
         bool pass = false;
         if(additionalAuthorizedContract == msg.sender) {
             pass = true;
         }
-
+        
         for (uint i = 0; i < authorizedUsers.length; i++) {
             if(authorizedUsers [i] == msg.sender) {
                 pass = true;
@@ -236,22 +215,22 @@ contract TimeDelayedVault {
         require (pass);
         _;
     }
-
+    
     modifier onlyOnce() {
         require(owner == 0x0);
         _;
     }
-
+    
     modifier onlyOwner() {
         require(msg.sender == owner);
         _;
     }
-
+    
     modifier recordAction() {
         lastUpdated = now;
         _;
     }
-
+    
     function setObserver(address ob) {
         bool duplicate = false;
         for (uint i = 0; i < observerHistory.length; i++) {
@@ -259,20 +238,20 @@ contract TimeDelayedVault {
                 duplicate = true;
             }
         }
-
+        
         if (!duplicate) {
             withdrawObserver = ob;
             observerHistory.push(ob);
         }
     }
-
+    
     function addToReserve() payable recordAction external returns (uint) {
         require(g.isValidGamer(msg.sender));
         assert(msg.value > 0.01 ether);
         return this.balance;
     }
-
-
+    
+    
     function withdrawFund() onlyAuthorized external returns (bool) {
         require(now > nextWithdrawTime);
         assert(withdrawObserver.call(bytes4(sha3("observe()"))));
@@ -280,17 +259,17 @@ contract TimeDelayedVault {
         nextWithdrawTime = nextWithdrawTime + withdrawCoolDownTime;
         return true;
     }
-
+    
     function checkAllVote() private returns (bool) {
         for(uint i = 0; i < votes.length; i++) {
             if(!votes[i]) {
                 return false;
             }
         }
-
+        
         return true;
     }
-
+    
     function clearVote() private {
         for(uint i = 0; i < votes.length; i++) {
             votes[i] = false;
@@ -304,18 +283,18 @@ contract TimeDelayedVault {
             clearVote();
             proposedAAA = proposal;
         }
-
+        
         votes[votePosition] = true;
         if (checkAllVote()) {
             additionalAuthorizedContract = proposedAAA;
             clearVote();
         }
     }
-
+    
     function resolve() onlyOwner {
         walletLibrary.delegatecall(bytes4(sha3("resolve()")));
     }
-
+    
     function initilizeVault() onlyOnce {
         lastUpdated = now;
         owner = msg.sender;
